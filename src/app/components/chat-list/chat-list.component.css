@@ -1,0 +1,13 @@
+.chat-room {
+  border: 1px solid #474747;
+  border-radius: 10px;
+  padding: 20px;
+  height: 500px;
+}
+
+.chat-message {
+  background-color: rgb(87, 81, 74);
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+}

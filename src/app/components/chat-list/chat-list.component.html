@@ -1,0 +1,12 @@
+<h1>Total Online Users {{ userCount$ | async}}</h1>
+<h1>{{ username }}</h1>
+
+<div class="chat-room">
+  <div class="chat-message" *ngFor="let chat of chats$ | async">
+    {{chat.username}}
+    {{chat.message}}
+  </div>
+</div>
+
+<input type="text" class="chat-input" [(ngModel)]="message"/>
+<button (click)="sendMessage()">Send</button>

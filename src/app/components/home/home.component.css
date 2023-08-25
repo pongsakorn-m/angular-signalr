@@ -1,0 +1,43 @@
+.content {
+  width: 100wh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 10%;
+}
+
+.big-text {
+  font-size: 5em;
+  cursor: none;
+  font-weight: bold;
+}
+
+.name-input {
+  border: 1px solid #534d4d;
+  width: 100%;
+  border-radius: 1rem;
+  padding: 10px;
+  text-align: center;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.big-btn {
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  padding: 10px;
+  width: 100%;
+  font-weight: bold;
+  background-color: rgb(165, 165, 131);
+  color: rgb(255, 255, 255);
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: ease-in 200ms;
+}
+
+.big-btn:hover {
+  background-color: rgb(117, 117, 96);
+}
