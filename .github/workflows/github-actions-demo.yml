@@ -1,39 +1,26 @@
-name: Build and Test
-
+name: Angular CI
 on:
   push:
-    branches: [master]
-
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
 jobs:
   build:
-    name: Build
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x]
-
     steps:
       - uses: actions/checkout@v2
-
       - name: Cache node modules
-        uses: actions/cache@v1
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-node-
-            
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v1.4.2
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Install Dependencies
-        run: npm i
-        
-      - name: Build Application
-        run: npm run build
-      
-      - name: List Files in Distribution Directory
-        run: ls -R ./dist
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: npm install and npm run CI commands
+        run: |
+          npm i
+          npm run build
